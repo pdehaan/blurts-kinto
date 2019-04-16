@@ -12,12 +12,12 @@
   "homepage": "https://github.com/pdehaan/blurts-kinto#readme",
   "keywords": [],
   "license": "MPL-2.0",
-  "main": "index.js",
+  "main": "lib.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pdehaan/blurts-kinto.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node cli"
   }
 }
