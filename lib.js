@@ -13,7 +13,7 @@ async function getMissingBreaches() {
 
 async function fetchHIBP() {
   const res = await axios.get("https://monitor.firefox.com/hibp/breaches");
-  return res.data.filter(breach => !isIgnoredBreach(breach));
+  return res.data.filter(breach => isActiveBreach(breach));
 }
 
 async function fetchRemoteSettings() {
@@ -21,6 +21,10 @@ async function fetchRemoteSettings() {
   return new Set(res.data.data.map(breach => breach.Name));
 }
 
-function isIgnoredBreach(breach) {
-  return !(breach.Domain !== "" && breach.IsVerified && !breach.IsFabricated && !breach.IsRetired && !breach.IsSpamList);
+function isActiveBreach(breach) {
+  return breach.Domain !== "" &&
+    breach.IsVerified &&
+    !breach.IsRetired &&
+    !breach.IsSpamList &&
+    !breach.IsFabricated;
 }
