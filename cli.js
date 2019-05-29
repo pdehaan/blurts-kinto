@@ -9,8 +9,8 @@ async function main() {
     await lib.getMissingBreaches();
     console.log("RemoteSettings is up to date!");
   } catch (err) {
-    console.info(err.message);
-    console.error(JSON.stringify(err.missingBreaches, null, 2));
+    console.error(err.message);
+    console.info(JSON.stringify(err.missingBreaches, null, 2));
     process.exitCode = 1;
     return;
   }
